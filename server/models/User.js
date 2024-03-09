@@ -1,8 +1,8 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const scheduleSchema = require('./Schedule');
-
+//  may need to ref to savedSchedule a type id instead of giving it scheduleSchema
+const scheduleSchema = require('./Schedule')
 const userSchema = new Schema(
     {
         username: {
@@ -20,7 +20,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-        schedule: [scheduleSchema]
+        savedSchedule: [scheduleSchema]
     },
     {
         toJSON: {
@@ -46,7 +46,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 // when we query a user, we'll also get another field called `scheduleCount` with the number of saved scheduled events we have
 userSchema.virtual('scheduleCount').get(function () {
-    return this.schedule.length;
+    return this.savedSchedule.length;
 });
 
 const User = model('User', userSchema);

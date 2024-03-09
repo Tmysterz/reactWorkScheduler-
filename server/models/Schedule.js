@@ -8,7 +8,7 @@ const scheduleSchema = new Schema({
         type: String,
     },
     startTime: {
-        type: Number
+        type: Number,
     },
     endTime: {
         type: Number,
