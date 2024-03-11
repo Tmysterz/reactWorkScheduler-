@@ -1,34 +1,39 @@
-import Accordion from 'react-bootstrap/Accordion';
+import Auth from '../utils/auth';
+import '../App.css';
 
-function BasicExample() {
-  return (
-    <Accordion defaultActiveKey="0">
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="1">
-        <Accordion.Header>Accordion Item #2</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-    </Accordion>
-  );
+function Home() {
+    return (
+        <div>
+            {!Auth.loggedIn() ? (
+                <div>
+                    <h1 className='homeH1'>
+                        Make managing time easy!
+                    </h1>
+                    <div className='homeP'>
+                        <p>
+                            One of the biggest stresses in life comes from the pressure of time.
+                        </p>
+                        <p>
+                            Use this website to save yourself that trouble and make your life easier.
+                        </p>
+                        <p>
+                            Click the button below to sign up and begin managing your time!
+                        </p>
+                        <button>
+                            Sign Up!
+                        </button>
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <h1>
+                        Welcome back insert logged in users name !
+                    </h1>
+                </div>
+            )}
+        </div>
+
+    );
 }
 
-export default BasicExample;
+export default Home;
